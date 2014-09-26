@@ -16,7 +16,7 @@ class TestDataFinder(unittest.TestCase):
     def testExampleA(self):
         self.maxDiff = None
 
-        Reader(self.mock_file, 20)
+        Reader(self.mock_file)
         expect_output = 'outdir/file_0'
         with open(self.mock_expected) as f:
             mock_expected = f.read()
@@ -28,27 +28,6 @@ class TestDataFinder(unittest.TestCase):
         actual_output = actual_output.split('\n')
 
         self.assertItemsEqual(mock_expected, actual_output)
-
-
-    def testExpectedB(self):
-        self.maxDiff = None
-        expected_files = ['outdir/file_0', 'outdir/file_1', 'outdir/file_2']
-        Reader(self.mock_file, 5)
-        expected_mock_files = ['mockfiles/expected_B_0.txt', 'mockfiles/expected_B_1.txt', 'mockfiles/expected_B_2.txt']
-        expected_contents = []
-        actual_contents = []
-
-        for i in expected_files:
-            with open(i, 'r') as f:
-                actual_contents.append(f.read())
-        for i in expected_mock_files:
-            with open(i, 'r') as f:
-                expected_contents.append(f.read())
-
-        content = ["outdir/%s" % x for x in os.listdir('outdir') if not x.startswith('.')]
-        self.assertItemsEqual(expected_files, content)
-        self.assertItemsEqual(expected_contents, actual_contents)
-
 
     def tearDown(self):
         content = ["outdir/%s" % x for x in os.listdir('outdir') if not x.startswith('.')]
