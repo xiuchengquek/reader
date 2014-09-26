@@ -1,0 +1,6 @@
+1	classA	termA	13
+1	classB	termC	2
+2	classA	termA	8
+2	classB	termC	2
+3	classA	termA	8
+3	classB	termC	2
