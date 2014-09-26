@@ -29,6 +29,7 @@ class TestDataFinder(unittest.TestCase):
 
         self.assertItemsEqual(mock_expected, actual_output)
 
+
     def tearDown(self):
         content = ["outdir/%s" % x for x in os.listdir('outdir') if not x.startswith('.')]
         [os.unlink(x) for x in content]
